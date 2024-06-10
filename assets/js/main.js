@@ -27,6 +27,17 @@ function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHtml = pokemons.map(convertPokemonToLi).join('')
         pokemonList.innerHTML += newHtml
+
+        // Add event listeners for mouse hover
+        const pokemonItems = document.querySelectorAll('.pokemon')
+        pokemonItems.forEach((item) => {
+            item.addEventListener('mouseenter', () => {
+                item.classList.add('pop')
+            })
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('pop')
+            })
+        })
     })
 }
 
